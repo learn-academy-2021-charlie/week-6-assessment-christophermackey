@@ -1,5 +1,7 @@
 // ASSESSMENT 6: JavaScript Coding Practical Questions with Jest
 
+const { expect } = require("@jest/globals")
+
 // Please read all questions thoroughly
 // Pseudo coding is REQUIRED
 // If you get stuck, please leave comments to help us understand your thought process
@@ -25,7 +27,11 @@ var people = [
 ]
 // Expected output: ["Ford Prefect is a hitchhiker.", "Zaphod Beeblebrox is a president of the galaxy.", "Arthur Dent is a radio employee."]
 
-
+// describe("hello", () => {
+//   test("returns a string that says hi", () => {
+//     expect(hello()).toEqual("hi")
+//   })
+// })
 
 // b) Create the function that makes the test pass.
 
@@ -40,7 +46,11 @@ var hodgepodge1 = [23, "Heyyyy!", 45, -10, 0, "Yo", false]
 var hodgepodge2 = [5, "Hola", 43, -34, "greetings", true]
 // Expected output: [ 2, 1, -1 ]
 
-
+// describe("hello", () => {
+//   test("returns a string that says hi", () => {
+//     expect(hello()).toEqual("hi")
+//   })
+// })
 
 // b) Create the function that makes the test pass.
 
@@ -55,6 +65,26 @@ var cubeAndSum1 = [2, 3, 4]
 var cubeAndSum2 = [0, 5, 10]
 // Expected output: 1125
 
-
+describe("sumOfCubed", () => {
+  test("takes in an array of numbers and returns the sum of all the numbers cubed", () => {
+    expect(sumOfCubed(cubeAndSum1)).toEqual(99)
+    expect(sumOfCubed(cubeAndSum2)).toEqual(1125)
+  })
+})
 
 // b) Create the function that makes the test pass.
+
+//declare function called sumOfCubed that accepts an array
+//inside function declare variable, newArray, to hold result of mapped input
+//map through array to pull out each value and return that value to the power of 3 (value ** 3)
+//return the newArray with .reduce() method which adds up all numbers in the array
+//.reduce() must take in 2 values, the accumulator and currentValue
+
+
+const sumOfCubed = (array) => {
+  let newArray = array.map(value => {
+    return value ** 3
+  })
+  return newArray.reduce((accumulator, currentValue) => accumulator + currentValue) 
+}
+console.log(sumOfCubed(cubeAndSum1));
