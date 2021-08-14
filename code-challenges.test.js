@@ -35,7 +35,7 @@ var people = [
 
 // b) Create the function that makes the test pass.
 
-
+console.log(people[1]);
 
 // --------------------2) Create a function that takes in a mixed data array and returns an array of only the REMAINDERS of the numbers when divided by 3.
 
@@ -46,15 +46,27 @@ var hodgepodge1 = [23, "Heyyyy!", 45, -10, 0, "Yo", false]
 var hodgepodge2 = [5, "Hola", 43, -34, "greetings", true]
 // Expected output: [ 2, 1, -1 ]
 
-// describe("hello", () => {
-//   test("returns a string that says hi", () => {
-//     expect(hello()).toEqual("hi")
-//   })
-// })
+describe("remainder", () => {
+  test("takes in a mixed data array and returns an array of only the REMAINDERS of the numbers when divided by 3", () => {
+    expect(remainder(hodgepodge1)).toEqual([ 2, 0, -1, 0 ])
+    expect(remainder(hodgepodge2)).toEqual([ 2, 1, -1 ])
+  })
+})
 
 // b) Create the function that makes the test pass.
 
+//declare a function called remainder which takes an array argument
+//use filter method to return an array with only numbers
+//
 
+const remainder = (array) => {
+  let newArray = array.filter(value => {
+    return typeof value === 'number'
+  })
+  return newArray.map(value => {
+    return value % 3
+  })
+}
 
 // --------------------3) Create a function that takes in an array of numbers and returns the sum of all the numbers cubed.
 
@@ -80,11 +92,9 @@ describe("sumOfCubed", () => {
 //return the newArray with .reduce() method which adds up all numbers in the array
 //.reduce() must take in 2 values, the accumulator and currentValue
 
-
 const sumOfCubed = (array) => {
   let newArray = array.map(value => {
     return value ** 3
   })
   return newArray.reduce((accumulator, currentValue) => accumulator + currentValue) 
 }
-console.log(sumOfCubed(cubeAndSum1));
