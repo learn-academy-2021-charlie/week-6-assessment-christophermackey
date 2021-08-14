@@ -27,15 +27,30 @@ var people = [
 ]
 // Expected output: ["Ford Prefect is a hitchhiker.", "Zaphod Beeblebrox is a president of the galaxy.", "Arthur Dent is a radio employee."]
 
-// describe("hello", () => {
-//   test("returns a string that says hi", () => {
-//     expect(hello()).toEqual("hi")
-//   })
-// })
+describe("galaxyLife", () => {
+  test("takes in an array of objects and returns an array with a sentence about each person with their names capitalized", () => {
+    expect(galaxyLife(people)).toEqual(["Ford Prefect is a hitchhiker.", "Zaphod Beeblebrox is a president of the galaxy.", "Arthur Dent is a radio employee."])
+  })
+})
 
 // b) Create the function that makes the test pass.
 
-console.log(people[1]);
+//declare function caller galaxyLife that takes in an array of objects
+//map through array to pull out each object
+//new variable called name to hold the value of the name key and split that name into an array > .split(" ")
+//new variable called capName to map through each value(first and last name) of above name variable
+//use .toUpperCase() on 0th index of each value and add the remainder of the string with concatenation(using .substring(1))
+//return string interpolation of capName and occupation
+
+const galaxyLife = (array) => {
+  return array.map(value => {
+    let name = value.name.split(" ")
+    let capName = name.map(value => {
+      return value[0].toUpperCase() + value.substring(1)
+    }).join(" ")
+    return `${capName} is a ${value.occupation}.`
+  })
+}
 
 // --------------------2) Create a function that takes in a mixed data array and returns an array of only the REMAINDERS of the numbers when divided by 3.
 
